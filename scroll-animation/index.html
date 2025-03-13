@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation</title>
+    <link rel="stylesheet" href="./styles.css">
+
+
+    <style>
+        @keyframes appear {
+            from {
+                opacity: 0;
+                scale: 0.5;
+            }
+
+            to{
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        .block{
+            animation: appear 5s ease-in-out;
+            
+            /* estas 2 van juntas */
+            animation-timeline: view(); /* la vista de la pantalla */
+            animation-range: entry 0% cover 40%; /* cuando se muestre el 0% del elemento empezara la animacion y cuando el 40% del vh se muetre esta animacion terminara*/
+
+        }
+
+
+        /* animacion para que desaparesca lo del inicio */
+        @keyframes disappear {
+            10% {
+                opacity: 1;
+                scale: 1;
+            }
+
+            50% {
+                opacity: 1;
+                scale: 1;
+            }
+
+            100%{
+                opacity: 0;
+                scale: 0.5;
+            }
+        }
+
+        h1{
+            animation: disappear 1s ease-in-out;
+            animation-timeline: view();
+            animation-range: entry 0% cover 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <h1>Animate On Scroll</h1>
+    </div>
+    <div class="view">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>
+</body>
+</html>
